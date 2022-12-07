@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -41,13 +42,11 @@
             padding-top: 24px;
             padding-bottom: 16px;
         }
-
     </style>
     <style>
         .Layout_mainContainer__QPlUL {
             position: relative;
         }
-
     </style>
     <style>
         * {
@@ -632,48 +631,13 @@
                 padding: 0 16px;
             }
         }
+
         .grp2 {
             display: none;
         }
     </style>
     <script>
-        window.addEventListener("load", () => {
-            const form = document.getElementById("merchantRequestForm");
-
-            function sendData() {
-                const XHR = new XMLHttpRequest();
-
-                // Bind the FormData object and the form element
-                const FD = new FormData(form);
-
-                // Define what happens on successful data submission
-                XHR.addEventListener("load", (event) => {
-                    alert(event.target.responseText);
-                });
-
-                // Define what happens in case of error
-                XHR.addEventListener("error", (event) => {
-                    alert('Oops! Something went wrong.');
-                });
-
-                // Set up our request
-                XHR.open("POST", "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdIlTxIOss8EC2rtoEIhwuhnhRIAgWzbBQ-YEW0s8Kdfnv_nw/formResponse");
-
-                // The data sent is what the user provided in the form
-                XHR.send(FD);
-            }
-
-            // Get the form element
-
-            // Add 'submit' event handler
-            form.addEventListener("submit", (event) => {
-                event.preventDefault();
-
-                sendData();
-
-            });
-        });
-        function grpExchange(grp1,grp2) {
+        function grpExchange(grp1, grp2) {
             const eles1 = document.getElementsByClassName(grp1)
             const eles2 = document.getElementsByClassName(grp2)
             for (let i = 0; i < eles1.length; i++) {
@@ -684,10 +648,10 @@
             }
         }
         function grp1() {
-            grpExchange("grp1","grp2")
+            grpExchange("grp1", "grp2")
         }
         function grp2() {
-            grpExchange("grp2","grp1")
+            grpExchange("grp2", "grp1")
         }
     </script>
 </head>
@@ -726,29 +690,35 @@
                                 class="LabelContainer_label__nnEFD">店舗名（現在地からお近くの店舗を表示します）</label>
                         </div>
                         <div class="CustomDropdown_ddContainer__8od4j">
-                            <div class="CustomDropdown_ddHeader__ZZD_2"><input id="shopName" name="entry.1129268321"
-                                    class="InputScreen_inputField__mstQ3" placeholder="位置情報を利用して店舗を選択"></div>
+                            <div class="CustomDropdown_ddHeader__ZZD_2">
+                                <input id="shopName" name="entry.1129268321" class="InputScreen_inputField__mstQ3"
+                                    placeholder="位置情報を利用して店舗を選択" required>
+                            </div>
 
                         </div>
                     </div>
                     <div class="InputScreen_inputContainer__MyORU">
                         <div class="LabelContainer_labelContainer__mTCxf">
-                            <p class="LabelContainer_required__5Cn8g">必須</p><label
+                            <label
                                 class="LabelContainer_label__nnEFD">店舗情報</label>
                         </div>
                         <div class="InputScreen_radioSelection__Kcfks">
-                            <div class="InputScreen_radioOption__mrCrd"><input type="radio" id="URLOption"
-                                    name="inputOption" checked="" onclick="grp1()"><label for="URLOption">店舗URL</label></div>
-                            <div class="InputScreen_radioOption__mrCrd"><input type="radio" id="AddTelOption"
-                                    onclick="grp2()"
-                                    name="inputOption"><label for="AddTelOption">店舗住所・電話番号</label></div>
+                            <div class="InputScreen_radioOption__mrCrd">
+                                <input type="radio" id="URLOption" name="inputOption" checked="" onclick="grp1()"><label
+                                    for="URLOption">店舗URL</label>
+                            </div>
+                            <div class="InputScreen_radioOption__mrCrd">
+                                <input type="radio" id="AddTelOption" onclick="grp2()" name="inputOption"><label
+                                    for="AddTelOption">店舗住所・電話番号</label>
+                            </div>
                         </div>
                     </div>
                     <div class="InputScreen_inputContainer__MyORU grp1">
                         <div class="LabelContainer_labelContainer__mTCxf">
                             <p class="LabelContainer_required__5Cn8g LabelContainer_optional__IDYeQ">任意</p><label
                                 class="LabelContainer_label__nnEFD">店舗URL</label>
-                        </div><input id="shopURL" name="entry.1934609617" placeholder="入力例：example.com"
+                        </div>
+                        <input type="url" id="shopURL" name="entry.1934609617" placeholder="入力例：https://example.com"
                             class="InputScreen_inputField__mstQ3 ">
                     </div>
 
@@ -756,7 +726,8 @@
                         <div class="LabelContainer_labelContainer__mTCxf">
                             <p class="LabelContainer_required__5Cn8g LabelContainer_optional__IDYeQ">任意</p><label
                                 class="LabelContainer_label__nnEFD">店舗住所</label>
-                        </div><input id="shopURL" name="entry.1934609617" placeholder="入力例：example.com"
+                        </div>
+                        <input id="shopURL" name="entry.1934609617" placeholder="入力例：example.com"
                             class="InputScreen_inputField__mstQ3 ">
                     </div>
 
@@ -764,7 +735,8 @@
                         <div class="LabelContainer_labelContainer__mTCxf">
                             <p class="LabelContainer_required__5Cn8g LabelContainer_optional__IDYeQ">任意</p><label
                                 class="LabelContainer_label__nnEFD">電話番号</label>
-                        </div><input id="shopURL" name="entry.1934609617" placeholder="入力例：example.com"
+                        </div>
+                        <input id="shopURL" name="entry.1934609617" placeholder="入力例：example.com"
                             class="InputScreen_inputField__mstQ3 ">
                     </div>
 
@@ -780,17 +752,20 @@
                         <div class="LabelContainer_labelContainer__mTCxf">
                             <p class="LabelContainer_required__5Cn8g LabelContainer_optional__IDYeQ">任意</p><label
                                 class="LabelContainer_label__nnEFD">お客様のメールアドレス</label>
-                        </div><input type="email" id="userEmail" name="entry.372701361"
-                            placeholder="入力例：email@example.com" class="InputScreen_inputField__mstQ3 ">
+                        </div>
+                        <input type="email" id="userEmail" name="entry.372701361" placeholder="入力例：email@example.com"
+                            class="InputScreen_inputField__mstQ3">
                     </div>
                     <div class="InputScreen_inputContainer__MyORU">
                         <div class="InputScreen_submitBtnWrapper__cLewR">
                             <div style="color:transparent">
 
-                            </div><input type="submit" class="InputScreen_submitBtn__kNuzK " value="リクエストする">
+                            </div>
+                            <input type="submit" class="InputScreen_submitBtn__kNuzK " value="リクエストする">
                         </div>
                         <p class="Disclaimer_disclaimer__e2h_7 false">※ご入力いただいたお客様の情報は、XX株式会社
-                            が「プライバシーポリシー」に従って取り扱います。XXX株式会社 は、「プライバシーポリシー」に定める利用目的以外でお客様の情報を利用することはありません。（仮）<span>TODO: PLEASE CONFIRM PRIVACY POLICY WITH LEGAL. </span></p>
+                            が「プライバシーポリシー」に従って取り扱います。XXX株式会社 は、「プライバシーポリシー」に定める利用目的以外でお客様の情報を利用することはありません。（仮）<span>TODO:
+                                PLEASE CONFIRM PRIVACY POLICY WITH LEGAL. </span></p>
                     </div>
                 </form>
             </div>

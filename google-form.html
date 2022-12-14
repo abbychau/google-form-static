@@ -33,7 +33,7 @@
     <meta property="og:site_name" content="Merchant Request Form">
     <meta property="og:url" content="https://yourdomain.com">
     <meta property="og:image" content="https://yourdomain.com/assets/pwaIcon/icon-192x192.png">
-
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="/" crossorigin="anonymous">
     <style>
         .Header_headerContainer__Joren {
@@ -635,6 +635,10 @@
         .grp2 {
             display: none;
         }
+
+        .successMessage{display: none; padding:1em;}
+        .successMessage_title{font-size: 24px; font-weight: 600; margin-bottom: 16px;}
+        .successMessage_message{font-size: 16px; margin-bottom: 16px;}
     </style>
     <script>
         function grpExchange(grp1, grp2) {
@@ -653,6 +657,37 @@
         function grp2() {
             grpExchange("grp2", "grp1")
         }
+
+        // override merchantRequestForm form submit, to ajax post
+        function submitForm() {
+            const form = document.getElementById("merchantRequestForm");
+            const formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    //if (response.success) 
+
+                    
+                } else {
+                    //const error = document.getElementById("apiError");
+                    //error.innerHTML = "An error occurred while submitting the form. Please try again later.";
+                }
+
+            };
+            xhr.send(formData);
+            $("#merchantRequestForm").hide();
+            $(".successMessage").show();
+        }
+
+        $(document).ready(function(){
+            $("#merchantRequestForm").submit(function(e){
+                e.preventDefault();
+                submitForm();
+            });
+        })
+
     </script>
 </head>
 
@@ -680,6 +715,10 @@
                 <input type="hidden" name="entry.1818386597" value="">
                 <input type="hidden" name="entry.372701361" value="">
                 -->
+                <div class="successMessage">
+                    <p class="successMessage_title">リクエストを受け付けました！</p>
+                    <p class="successMessage_text">ご協力ありがとうございました！</p>
+                </div>
                 <form id="merchantRequestForm" class="InputScreen_formWrapper__foD3Y"
                     action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdIlTxIOss8EC2rtoEIhwuhnhRIAgWzbBQ-YEW0s8Kdfnv_nw/formResponse"
                     autocomplete="off">

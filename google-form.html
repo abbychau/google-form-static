@@ -16,24 +16,20 @@
     <meta name="description" content="R-Pay's merchant request form descriptions">
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="msapplication-TileColor" content="#2B5797">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="theme-color" content="#000000">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://yourdomain.com">
     <meta name="twitter:title" content="Merchant Request Form">
     <meta name="twitter:description" content="R-Pay's Merchant Request Form">
-    <meta name="twitter:image" content="https://yourdomain.com/assets/pwaIcon/icon-192x192.png">
     <meta name="twitter:creator" content="@Rakuten">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Merchant Request Form">
     <meta property="og:description" content="R-Pay's Merchant Request Form">
     <meta property="og:site_name" content="Merchant Request Form">
-    <meta property="og:url" content="https://yourdomain.com">
-    <meta property="og:image" content="https://yourdomain.com/assets/pwaIcon/icon-192x192.png">
-    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="/" crossorigin="anonymous">
     <style>
         @font-face {
@@ -42,14 +38,17 @@
             font-weight: normal;
             font-style: normal;
         }
-        
+
         .Header_headerContainer__Joren {
             width: 100%;
             padding-left: 5%;
             padding-top: 24px;
             padding-bottom: 16px;
         }
-        * {font-family: "Hiragino Sans";}
+
+        * {
+            font-family: "Hiragino Sans";
+        }
     </style>
     <style>
         .Layout_mainContainer__QPlUL {
@@ -234,7 +233,7 @@
             transform: scale(1);
         }
 
-        .Hero_heroContainer__B9mBX {
+        .Hero_heroContainer {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -644,9 +643,25 @@
             display: none;
         }
 
-        .successMessage{display: none; padding:1em;}
-        .successMessage_title{font-size: 24px; font-weight: 600; margin-bottom: 16px;}
-        .successMessage_message{font-size: 16px; margin-bottom: 16px;}
+        .successMessage {
+            display: none;
+            padding: 0;
+        }
+
+        .CompletedScreen_completedContainer__XwJsP {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            height: 80vh;
+            margin: 0 auto;
+        }
+        .CompletedScreen_heading__KivwH {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
     </style>
     <script>
         function grpExchange(grp1, grp2) {
@@ -677,7 +692,7 @@
                     const response = JSON.parse(xhr.responseText);
                     //if (response.success) 
 
-                    
+
                 } else {
                     //const error = document.getElementById("apiError");
                     //error.innerHTML = "An error occurred while submitting the form. Please try again later.";
@@ -686,11 +701,12 @@
             };
             xhr.send(formData);
             $("#merchantRequestForm").hide();
+            $(".Hero_heroContainer").hide();
             $(".successMessage").show();
         }
 
-        $(document).ready(function(){
-            $("#merchantRequestForm").submit(function(e){
+        $(document).ready(function () {
+            $("#merchantRequestForm").submit(function (e) {
                 e.preventDefault();
                 submitForm();
             });
@@ -707,7 +723,7 @@
                     src="media/rakutenLogo.ebe222d4.svg" width="222" height="32" decoding="async" data-nimg="1"
                     loading="lazy" style="color:transparent"></div>
             <div>
-                <div class="Hero_heroContainer__B9mBX">
+                <div class="Hero_heroContainer">
                     <p class="Hero_firstRow__ySVt1">このお店で</p>
                     <p class="Hero_secondRow__nvxh6">楽天ペイを使いたい！</p>
                     <p class="Hero_thirdRow__gfzsl">リクエスト募集しています</p><img alt="hero-image"
@@ -724,8 +740,19 @@
                 <input type="hidden" name="entry.372701361" value="">
                 -->
                 <div class="successMessage">
-                    <p class="successMessage_title">リクエストを受け付けました！</p>
-                    <p class="successMessage_text">ご協力ありがとうございました！</p>
+                    <div class="CompletedScreen_completedContainer__XwJsP">
+                        <img alt="greenCheck"
+                            
+                            src="media/greencheck.svg" width="57" height="41" decoding="async"class="CompletedScreen_greenCheck__Vhv0G" loading="lazy"
+                            style="color: transparent;    margin: 40px 0;">
+                        <p class="CompletedScreen_heading__KivwH">リクエストを受け付けました</p>
+                        <p>いただいたリクエストは</p>
+                        <p>今後の参考にさせていただきます。</p>
+                        <p>ありがとうございました。</p>
+                        <p style="padding: 36px 8px 60px;
+                        font-size: 12px;    text-align: center;">※ご入力いただいたお客様の情報は、XX株式会社
+                            が「プライバシーポリシー」に従って取り扱います。XXX株式会社 は、「プライバシーポリシー」に定める利用目的以外でお客様の情報を利用することはありません。（TODO:仮）</p>
+                    </div>
                 </div>
                 <form id="merchantRequestForm" class="InputScreen_formWrapper__foD3Y"
                     action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdIlTxIOss8EC2rtoEIhwuhnhRIAgWzbBQ-YEW0s8Kdfnv_nw/formResponse"
@@ -746,8 +773,7 @@
                     </div>
                     <div class="InputScreen_inputContainer__MyORU">
                         <div class="LabelContainer_labelContainer__mTCxf">
-                            <label
-                                class="LabelContainer_label__nnEFD">店舗情報</label>
+                            <label class="LabelContainer_label__nnEFD">店舗情報</label>
                         </div>
                         <div class="InputScreen_radioSelection__Kcfks">
                             <div class="InputScreen_radioOption__mrCrd">
